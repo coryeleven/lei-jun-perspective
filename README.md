@@ -14,34 +14,67 @@
 
 ## 安装
 
-### Codex
+推荐使用通用的 `skills` CLI 安装。它会识别当前 Agent，并把 Skill 安装到对应目录。
 
-将仓库安装到 Codex skills 目录：
+### 全局安装（推荐）
+
+```bash
+npx -y skills add coryeleven/lei-jun-perspective --skill lei-jun-perspective --global --yes
+```
+
+完整 GitHub URL 也可以：
+
+```bash
+npx -y skills add https://github.com/coryeleven/lei-jun-perspective --skill lei-jun-perspective --global --yes
+```
+
+安装后重启你的 Agent / Codex / Claude Code，让新 Skill 生效。
+
+### 安装到所有支持的 Agent
+
+如果你同时使用多个支持 Skills 的 Agent：
+
+```bash
+npx -y skills add coryeleven/lei-jun-perspective --global --all
+```
+
+### 项目级安装
+
+如果只想在当前项目中使用，进入项目根目录后运行：
+
+```bash
+npx -y skills add coryeleven/lei-jun-perspective --skill lei-jun-perspective --yes
+```
+
+### 查看仓库内可安装的 Skill
+
+```bash
+npx -y skills add coryeleven/lei-jun-perspective --list
+```
+
+预期会看到：
+
+```text
+Available Skills
+  lei-jun-perspective
+```
+
+### 更新
+
+```bash
+npx -y skills update lei-jun-perspective --global
+```
+
+### 手动安装（备用）
+
+如果你的环境暂时不能使用 `npx`，可以手动 clone 到对应 Agent 的 skills 目录。例如 Codex：
 
 ```bash
 mkdir -p ~/.codex/skills
 git clone https://github.com/coryeleven/lei-jun-perspective.git ~/.codex/skills/lei-jun-perspective
 ```
 
-重启 Codex 后生效。
-
-更新到最新版：
-
-```bash
-cd ~/.codex/skills/lei-jun-perspective
-git pull
-```
-
-### Claude / 兼容 Skills 目录
-
-如果你的环境使用项目级 `.claude/skills/`：
-
-```bash
-mkdir -p .claude/skills
-git clone https://github.com/coryeleven/lei-jun-perspective.git .claude/skills/lei-jun-perspective
-```
-
-也可以下载 ZIP 后解压，确保目录结构为：
+手动安装时请确保目录结构为：
 
 ```text
 skills/
